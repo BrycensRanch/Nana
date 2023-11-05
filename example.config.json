@@ -1,0 +1,24 @@
+{
+    "sshLogin": {
+        "host": "localhost",
+        "port": 22,
+        "username": "romvnly",
+        "password": "",
+        "minecraftServerPath": "/home/romvnly/Desktop/minecraft",
+        "passphrase": "",
+        "retries": 2,
+        "retry_factor": 2,
+        "retry_minTimeout": 2000
+    },
+    "services": {
+        "uptimerobot": {
+            "key": "",
+            "monitored":["785675420"]
+        }
+    },
+    "restAPIURL": "http://localhost:4567",
+    "restAPIKey":"58418457-06f4-473c-8f35-5b595b680204",
+    "pasteGGKey": "",
+    "prefix":"!",
+    "token":""
+}
