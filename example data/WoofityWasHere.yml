@@ -1,0 +1,39 @@
+godmode: false
+lastlocation:
+  world: 010bf4fb-0444-4b99-90c0-2ac31198237e
+  x: 1410.5
+  y: 79.0
+  z: -11669.5
+  yaw: -112.08966064453125
+  pitch: 52.94999313354492
+  world-name: world
+timestamps:
+  login: 1636572821989
+  logout: 1636573703604
+  lastteleport: 0
+  lastheal: 0
+  mute: 0
+  jail: 0
+  onlinejail: 0
+logoutlocation:
+  world: 010bf4fb-0444-4b99-90c0-2ac31198237e
+  x: -144.3413027560738
+  y: 140.0
+  z: -105.4196027765313
+  yaw: -68.70010375976562
+  pitch: 19.0499210357666
+  world-name: world
+money: '14429.055023307597633795'
+baltop-exempt: false
+afk: false
+nickname: §9Woofity
+ip-address: 0.0.0.0
+last-account-name: WoofityWasHere
+teleportenabled: true
+teleportauto: false
+muted: false
+jailed: false
+socialspy: false
+npc: false
+powertoolsenabled: true
+accepting-pay: true

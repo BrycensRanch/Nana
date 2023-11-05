@@ -1,0 +1,14 @@
+uuid=899b4807-1867-402e-9d79-dc58a01c6273
+lastOnline=1637287009331
+registered=1615576215015
+joinedTownAt=1634534991988
+isNPC=false
+title=
+surname=
+town=Rebel_Renegade
+town-ranks=
+nation-ranks=
+friends=dodomenico
+
+protectionStatus=residentBuild,residentDestroy,residentSwitch,residentItemUse
+metadata=[["towny_stringdf","townychat_ignoredChannels","localï¼Œ admin","Ignored TownyChat Channels"],["towny_intdf","siegewar_nationrefund","1600","Nation Refund"]]

@@ -1,0 +1,18 @@
+version: '3'
+services:
+  db:
+    # Smaller images are great.
+    # Also, this is a development DB - not supposed to used in production.
+    image: rapidfort/mariadb
+    network_mode: host
+    environment:
+      MARIADB_ROOT_PASSWORD: password
+      MARIADB_DATABASE: advancedban
+      MARIADB_USER: nana
+      MARIADB_PASSWORD: m4ceAfpRmZjVQZMmNDamNnV5d6nGBXXh
+      ALLOW_EMPTY_PASSWORD: yes
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./init-discordsrv-database.sql:/docker-entrypoint-initdb.d/init-discordsrv-database.sql
+    ports:
+      - "3306:3306"
