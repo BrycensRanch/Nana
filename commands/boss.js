@@ -48,7 +48,7 @@ const item = require('./item');
     */
     async execute(message, args, client, flags, parsedArgs) {
       const sass = require('../sass.json').success
-      const runningAsInteraction = message instanceof Discord.Interaction;
+      const runningAsInteraction = message instanceof Discord.BaseInteraction;
       var lastMessage;
       var send = (whatever) => {
         if (runningAsInteraction) {
@@ -121,7 +121,7 @@ const item = require('./item');
         await handleEmbed()
         async function handleEmbed() {
         const bossDisplayName = capitalize(bossName);
-        const bossEmbed = new Discord.MessageEmbed();
+        const bossEmbed = new Discord.EmbedBuilder();
         if (runningAsInteraction) console.log(message.options);
         boss.image = mobMappings[bossDisplayName] || mobMappings[capitalize(boss.type)];
         if (boss.image) bossEmbed.setThumbnail(boss.image)
@@ -141,15 +141,14 @@ const item = require('./item');
             **Ability Amount**: ${boss['ability-amount'] || 'Unknown'}
             ${boss['forced-abilities'] ? `**Forced Abilities**: ${boss['forced-abilities'].join(', ')}\n` : ''}${boss['blacklisted-abilities'] ? `**Blacklisted Abilities**: ${boss['blacklisted-abilities'].join(', ')}\n` : ''}
             **Loot Table**: 
-            - ${boss['loot-table']?.map(x => `${capitalize(x.split(":")[0])} (${Math.round(Number(x.split(":")[1]) * 100)}% Chance)`).join("\n- ") || 'None, only drops stuff from global_drops.yml'}
-            —————————————
-            **Modifiers**: 
-            - Has ${boss['follow-range-multiplier'] || 0} times the normal range of a ${capitalize(boss.type)}
-            - Has ${boss['health-multiplier'] || 0} times the normal health of a ${capitalize(boss.type)}
-            - Does ${boss['damage-multiplier'] || 0} times the normal damage of a ${capitalize(boss.type)}
+            - ${boss['loot-table']?.map(x => `${capitalize(x.split(":")[0])} (${Math.round(Number(x.split(":")[1]) * 100)}% Chance)`).join("\n- ") || 'None, only drops stuff from global_drops.yml'}\n
+            **Modifiers**:
+             
+            - Has ${boss['follow-range-multiplier'] || 1} times the normal range of a ${capitalize(boss.type)}
+            - Has ${boss['health-multiplier'] || 1} times the normal health of a ${capitalize(boss.type)}
+            - Does ${boss['damage-multiplier'] || 1} times the normal damage of a ${capitalize(boss.type)}
             `)
-           .setColor("RANDOM")
-           .setFooter(`One of the ${Object.keys(bossData).length} Infernals`)
+           .setColor(Discord.Colors.Fuchsia)
           ],
           components: []
         }

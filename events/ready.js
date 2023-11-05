@@ -20,6 +20,6 @@ const res = client.application;
     console.log(colors.brightRed('The bot has successfully started.\n---\n'
     +`Serving ${client.users.cache.size} users, ${client.botAdmins.length} bot admins, ${client.channels.cache.size} channels, and ${client.guilds.cache.size} guilds with ${client.commands.size} commands!`));
     client.tempDir = require('path').join(await require('fs').promises.realpath(require('os').tmpdir()), 'Nana')
-    console.log(client.tempDir)
+    await require('fs').promises.mkdir(client.tempDir).catch(() => null)
 
 }

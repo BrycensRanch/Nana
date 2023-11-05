@@ -54,10 +54,6 @@ const {
 const {
     Punishment
 } = require('../model/Punishment');
-const {
-    LinkedAccount
-} = require('../model/LinkedAccount');
-
 function debugLine(message) {
     let e = new Error();
     let frame = e.stack.split("\n")[2]; // change to 3 for grandparent func
@@ -100,7 +96,7 @@ module.exports = {
             required: true
       }
     ],
-    specialGuilds: null, // Array of guild IDs that this command can be ran in.
+    specialGuilds: null, // Array of guild IDs that this command can be run in.
     examples: [],
     /**
      * @param {Discord.Message} message Message class
@@ -110,6 +106,8 @@ module.exports = {
      * @param {Array<String>} parsedArgs Parsed arguments like "discord epic" are seen as one argument.
      */
     execute: async function (message, args, client, flags, parsedArgs) {
+        let pasteLink;
+        const player = {};
         const pasteGG = new PasteGG(client.config.pasteGGKey);
         const options = {
             validateStatus: (status) => true,
@@ -121,7 +119,7 @@ module.exports = {
         const placeholderEndpoint = client.config.restAPIURL + `/v1/placeholders/replace`
 
         async function getPlaceholder(placeholder, uuid) {
-            const {data, statusText, request} = await axios(placeholderEndpoint,
+            const {data, statusText} = await axios(placeholderEndpoint,
                 {
                     method: "POST",
                     data: qs.stringify({
@@ -157,14 +155,14 @@ module.exports = {
             return data.split('|');
         }
 
-        var shouldContinueRunning = true
+        let shouldContinueRunning = true;
         const runningAsInteraction = message instanceof Discord.BaseInteraction;
         const debugMessages = [];
-        var lastMessage;
+        let lastMessage;
         /**
          * @param {any} whatever Message class
          */
-        var send = (whatever) => {
+        let send = (whatever) => {
             if (typeof whatever === "string" && whatever.includes('never played')) sftp.end().catch(() => null)
             if (runningAsInteraction) {
                 message.reply(whatever).then((m) => {
@@ -178,7 +176,7 @@ module.exports = {
                 })
                     .catch(console.error)
             }
-        }
+        };
 
         function logError(error) {
             if (error.response) {
@@ -199,9 +197,10 @@ module.exports = {
             console.error(error.config);
         }
 
-        var apiResponse;
+        let apiResponse;
 
         async function getUserData(platform = "Java", id) {
+            let request;
             if (runningAsInteraction) {
                 message.deferReply();
                 send = (whatever) => {
@@ -223,9 +222,9 @@ module.exports = {
             }
             if (!id) throw new TypeError("Id parameter is REQUIRED.")
             if (platform == 'Java') {
-                var request = await axios.get(`https://playerdb.co/api/player/minecraft/${id}`, {
+                request = await axios.get(`https://playerdb.co/api/player/minecraft/${id}`, {
                     validateStatus: (status) => status === 200 || 404
-                })
+                });
                 debugMessages.push(request.data, id)
                 if (!request || !request?.data || !request?.data?.data?.player?.username) return send("The specified user could not found or there was an error.")
 
@@ -243,9 +242,9 @@ module.exports = {
                     id = parseInt(id.replace(/000000-0000-0000-000/, '').replace(/-/, ''), 16).toString()
                 }
                 debugMessages.push("id after modification:", id)
-                var request = await axios.get(`https://playerdb.co/api/player/xbox/${id}`, {
+                request = await axios.get(`https://playerdb.co/api/player/xbox/${id}`, {
                     validateStatus: (status) => status === 200 || 404
-                })
+                });
                 debugMessages.push(request.config.url, request.data)
                 if (!request || !request?.data || !request?.data?.data?.player?.username) return send("The specified user could not found on Xbox or there was an error.")
                 apiResponse = request.data.data.player;
@@ -262,7 +261,6 @@ module.exports = {
         const currentPunishedRepo = client.db.getRepository('Punishments')
         const UserSettings = client.db2.getRepository("UserSettings");
 
-        var player = {};
         player.platform = capitalize(parsedArgs[0]);
         if (!parsedArgs[0]) {
             const linkedAccount = await client.DatabaseManager.getLinkedAccount(message.author.id)
@@ -315,7 +313,7 @@ module.exports = {
                     const members = await message.guild.members.fetch({
                         cache: true
                     })
-                    var member = members.find(m => m.user.tag == parsedArgs[0])
+                    let member = members.find(m => m.user.tag == parsedArgs[0]);
                     if (!member) member = members.find(m => m.user.tag.toLowerCase().trim() == parsedArgs[0].toLowerCase().trim())
                     if (!member) return send("No Discord member could be found with that Discord tag in this guild!")
                     const linkedAccount = await client.DatabaseManager.getLinkedAccount(member.id);
@@ -324,18 +322,19 @@ module.exports = {
                     player.platform = linkedAccount.uuid.startsWith("00000000-0000-0000-000") ? 'Bedrock' : 'Java'
                     parsedArgs[0] = player.platform
                     parsedArgs[1] = linkedAccount.uuid
+                    break;
                 case /^[a-zA-Z0-9_]{2,16}$/mg.test(parsedArgs[0]):
                     debugMessages.push("Java User SEARCH DETECTED");
                     debugMessages.push("Java User Given: ", parsedArgs[0])
                     parsedArgs[1] = parsedArgs[0]
                     player.platform = 'Java';
                     parsedArgs[0] = player.platform;
-
+                    break;
                 default:
                     if (!this.arguments[0]?.choices.map(x => x.name).includes(player.platform)) {
                         debugMessages.push(player.platform, this.arguments[0]?.choices.map(x => x.name).includes(player.platform))
                         return send({
-                            embeds: [new Discord.MessageEmbed()
+                            embeds: [new Discord.EmbedBuilder()
                                 .setTitle(":x: | Incorrect Command Usage")
                                 .setDescription(`You need to specify whether or not you want to search on \`Java\` or \`Bedrock\`\n**Example**: ${runningAsInteraction ? '/' : client.config.prefix}history Java Romvnly`)]
                         })
@@ -363,17 +362,17 @@ module.exports = {
 
         if (!parsedArgs[1]) {
             return send({
-                embeds: [new Discord.MessageEmbed()
+                embeds: [new Discord.EmbedBuilder()
                     .setTitle(":x: | Incorrect Command Usage")
                     .setDescription(`You need to specify a username\n**Example**: ${runningAsInteraction ? '/' : client.config.prefix}history Java Romvnly`)]
             })
         }
-        if (!parsedArgs[1]?.startsWith('.') && player.platform == 'Bedrock') parsedArgs[1] = "." + parsedArgs[1]?.replace(/ /, "_");
+        if (!parsedArgs[1]?.startsWith('.') && player.platform === 'Bedrock') parsedArgs[1] = "." + parsedArgs[1]?.replace(/ /, "_");
 
-        var isUUID = apiResponse ? true : parsedArgs[1]?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i)
+        const isUUID = apiResponse ? true : parsedArgs[1]?.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i);
         let usernameFormat;
-        if (player.platform == 'Java') usernameFormat = /^[0-9A-Za-z_]{1,16}$/i;
-        if (player.platform == 'Bedrock') {
+        if (player.platform === 'Java') usernameFormat = /^[0-9A-Za-z_]{1,16}$/i;
+        if (player.platform === 'Bedrock') {
             if (parsedArgs[1].includes("#")) {
                 usernameFormat = /^.{3,23}#[0-9]{4}$/;
             } else {
@@ -406,11 +405,11 @@ module.exports = {
             const bedrockGamertag = apiResponse.username;
             debugMessages.push(apiResponse)
             player.name = apiResponse.name;
-            if (player.platform == 'Java') player.uuid = apiResponse.id
-            if (player.platform == 'Bedrock') player.xbox = apiResponse.meta;
+            if (player.platform === 'Java') player.uuid = apiResponse.id
+            if (player.platform === 'Bedrock') player.xbox = apiResponse.meta;
             // TownyAdvanced data logic (FLAT DATA ONLY)
             const playerPath = path.join(client.config.sshLogin.minecraftServerPath, "plugins/Towny/data/residents/", player.name + '.txt');
-            const localPlayerPath = path.join(client.tempDir, 'commands', player.name + '.txt');
+            const localPlayerPath = path.join(client.tempDir, player.name + '.txt');
             const townyFileExists = await sftp.exists(playerPath)
             if (!townyFileExists) return send("There was no towny playerdata found for this player, perhaps they've never played on Easy SMP?")
             await sftp.fastGet(playerPath, localPlayerPath)
@@ -418,7 +417,7 @@ module.exports = {
             fs.unlinkSync(localPlayerPath)
             const playerProperties = properties.parse(playerFile);
             if (!playerProperties) return send("Failed to parse player data!!! WEEWOWOOOo");
-            if (player.platform == 'Bedrock' && !player.uuid) {
+            if (player.platform === 'Bedrock' && !player.uuid) {
                 player.uuid = playerProperties.uuid;
             }
             player.isNPC = playerProperties.isNPC;
@@ -426,7 +425,6 @@ module.exports = {
             player.punishmentHistory = await punishmentRepo.find({
                 name: player.name
             })
-            var pasteLink;
             if (player.punishmentHistory?.length) {
                 pasteLink = await pasteGG.post({
                     description: `Easy SMP » Punishment History for ${player.name}`, // Optional
@@ -449,7 +447,7 @@ module.exports = {
             const remoteEssentialsPath = path.join(client.config.sshLogin.minecraftServerPath, "plugins/Essentials/userdata/", player.uuid + '.yml')
             const essentialsFileExists = await sftp.exists(remoteEssentialsPath)
             if (!essentialsFileExists) return send("There was no Essentials data found for this player, perhaps they've never played on Easy SMP?")
-            const localEssentialsPath = path.join(client.tempDir, 'commands', player.name + '.yml')
+            const localEssentialsPath = path.join(client.tempDir, player.name + '.yml')
             await sftp.fastGet(remoteEssentialsPath, localEssentialsPath)
             const essentialsFile = await readFile(localEssentialsPath);
             fs.unlinkSync(localEssentialsPath)
@@ -467,7 +465,7 @@ module.exports = {
             if (player.town.exists) {
                 // TownyAdvanced data logic (FLAT DATA ONLY)
                 const townPath = path.join(client.config.sshLogin.minecraftServerPath, "plugins/Towny/data/towns/", player.town.name + '.txt');
-                const localTownPath = path.join(client.tempDir, 'commands', player.name + '-' + player.town.name + '.txt');
+                const localTownPath = path.join(client.tempDir, player.name + '-' + player.town.name + '.txt');
                 const townyFileExists = await sftp.exists(townPath)
                 if (!townPath) return send("There was no towny data found for this town... Catastrophic failure")
                 await sftp.fastGet(townPath, localTownPath)
@@ -520,7 +518,7 @@ module.exports = {
             // https://help.minecraft.net/hc/en-us/articles/8969841895693
             // This feature will NEVER work like it used to 2 years ago. Thanks, Mojang! ❤️
             // https://cdn.arstechnica.net/wp-content/uploads/2012/06/torvaldsnvidia-640x424.jpg
-            const nameHistory = player.platform == 'Java' ? apiResponse.meta.name_history : [{
+            const nameHistory = player.platform === 'Java' ? apiResponse.meta.name_history : [{
                 name: 'Java only feature!'
             }];
             player.nameHistory = nameHistory?.map(x => `${x.name}${x.changedToAt ? ' (' + moment(x.changedToAt).fromNow() + ')' : ''}`) || []
@@ -534,7 +532,7 @@ module.exports = {
             player.description = userSetting?.description || 'The Edge Lord';
             try {
                 const remoteBannedPlayersPath = path.join(client.config.sshLogin.minecraftServerPath, "banned-players.json")
-                const localBannedPlayers = path.join(client.tempDir, 'commands', 'banned-players.json')
+                const localBannedPlayers = path.join(client.tempDir, 'banned-players.json')
                 await sftp.fastGet(remoteBannedPlayersPath, localBannedPlayers)
                 const bannedPlayers = JSON.parse(await readFile(localBannedPlayers, 'utf-8'))
                 player.banned = bannedPlayers.find(x => x.uuid == player.uuid);
@@ -546,7 +544,7 @@ module.exports = {
             if (!player.banned) {
                 const currentlyPunished = await currentPunishedRepo.findOneBy({
                     uuid: player.uuid.replace(/-/g, "")
-                })
+                }).catch(() => null)
                 if (currentlyPunished) {
                     player.banned = {
                         uuid: player.uuid,
@@ -560,7 +558,7 @@ module.exports = {
                 }
             }
             // const NBTPath = path.join("/home/mcuser/minecraft/world/playerdata", player.uuid + '.dat')
-            // const localNBTPath = path.join(client.tempDir, 'commands', player.uuid + '.dat');
+            // const localNBTPath = path.join(client.tempDir, player.uuid + '.dat');
             // await sftp.fastGet(NBTPath, localNBTPath)
             // const NBTFile = await readFile(localNBTPath);
             // var NBTProperties;
@@ -580,22 +578,22 @@ module.exports = {
         sftp.end().then(() => null).catch(() => null)
         const filter = i => i.user.id === message.author.id;
         const collector = message.channel.createMessageComponentCollector({filter, time: 300000});
-        const row = new Discord.MessageActionRow()
+        const row = new Discord.ActionRowBuilder()
             .addComponents(
-                new Discord.MessageButton()
+                new Discord.ButtonBuilder()
                     .setCustomId('stalkeranalytics')
                     .setLabel('Stalker Analytics')
-                    .setStyle('PRIMARY'),
-                new Discord.MessageButton()
+                    .setStyle('Primary'),
+                new Discord.ButtonBuilder()
                     .setCustomId('vote')
                     .setLabel('Voting Info')
-                    .setStyle('SUCCESS'),
+                    .setStyle('Success'),
             );
         // Jobs Placeholders don't work for players that aren't online
-        if (player.online) row.addComponents(new Discord.MessageButton()
+        if (player.online) row.addComponents(new Discord.ButtonBuilder()
             .setCustomId('jobs')
             .setLabel('Job Info')
-            .setStyle('DANGER'))
+            .setStyle('Danger'))
         /**
          * @param {Discord.ButtonInteraction} i
          */
@@ -650,9 +648,8 @@ module.exports = {
             i.update({components: [row]});
             i.channel.send({
                 embeds: [
-                    new Discord.MessageEmbed()
+                    new Discord.EmbedBuilder()
                         .setTitle("Player Analytics")
-                        .setAuthor(message.author.tag)
                         .setDescription(`
                         Average Ping: ${averagePingThisMonth}
                         Session Count: ${player.plan.sessionCount}
@@ -665,7 +662,7 @@ module.exports = {
                         Mob Kill Count: ${mobKillCount}
                         Deaths: ${deaths}
                         KDR: ${Number(kdr).toFixed(2)}`)
-                        .setColor("GREEN")
+                        .setColor(Discord.Colors.Green)
                         .setImage("https://camo.githubusercontent.com/e8537205e9ea89bd8c1d012035a9427e997c6a8f5ab105f5eac54f8aca5424bf/68747470733a2f2f7075752e73682f41585367372f356632663738633036632e6a7067")
                 ]
             })
@@ -705,10 +702,9 @@ module.exports = {
 
             i.channel.send({
                 embeds: [
-                    new Discord.MessageEmbed()
+                    new Discord.EmbedBuilder()
                         .setTitle("Voting Stats")
-                        .setAuthor(message.author.tag)
-                        .setColor('RANDOM')
+                        .setColor(Discord.Colors.Green)
                         .setImage('https://i.imgur.com/V92BaS2.png')
                         .setDescription(`
                     Voted: ${stringToBoolean(canVote) ? 'No' : 'Yes'}
@@ -745,11 +741,10 @@ module.exports = {
             console.log(await getJobLevel('builder'), properJobs, jobLevelsAndNames)
             i.channel.send({
                 embeds: [
-                    new Discord.MessageEmbed()
+                    new Discord.EmbedBuilder()
                         .setTitle("Steve Jobs")
-                        .setColor('DARK_RED')
+                        .setColor(Discord.Colors.DarkRed)
                         .setImage('https://camo.githubusercontent.com/a5cba6dca85527f5852304bf436dc4d531d53fcd006d0eadb26733c4c7716431/68747470733a2f2f7777772e737069676f746d632e6f72672f646174612f7265736f757263655f69636f6e732f342f343231362e6a70673f31343234343633373639')
-                        .setAuthor(message.author.tag)
                         .setDescription(`
                     Jobs: ${jobCount} / ${maxJobs}
                     Job Points: ${jobPoints}
@@ -762,17 +757,17 @@ module.exports = {
         }
 
         async function handleEmbed() {
-            const historyEmbed = new Discord.MessageEmbed();
+            const historyEmbed = new Discord.EmbedBuilder();
             const opts = {
                 components: [row],
                 embeds: [
                     historyEmbed
-                        .setTitle(player.platform == 'Bedrock' ? `${player.name}${player.xbox.realName.length ? ` (${player.xbox.realName})` : ''}` : `${player.towny.prefix || ''}` + player?.name || 'Unknown Player')
-                        .setURL(player.platform == 'Bedrock' ? encodeURI(`https://xboxgamertag.com/search/${apiResponse.username}`) : `https://namemc.com/profile/${player.uuid}`)
+                        .setTitle(player.platform === 'Bedrock' ? `${player.name}${player.xbox.realName.length ? ` (${player.xbox.realName})` : ''}` : `${player.towny.prefix || ''}` + player?.name || 'Unknown Player')
+                        .setURL(player.platform === 'Bedrock' ? encodeURI(`https://xboxgamertag.com/search/${apiResponse.username}`) : `https://namemc.com/profile/${player.uuid}`)
                         .setDescription(`
             **Title**: ${player.towny.title || 'None, they have no swags'} 
             **Surname**: ${player.towny.surname || 'None'}
-            **Description**: ${player.xbox && player.description == "The Edge Lord" ? player.xbox.bio : player.description}
+            **Description**: ${player.xbox && player.description === "The Edge Lord" ? player.xbox.bio : player.description}
             **Platform**: ${player?.platform || "Unknown"}${player.xbox ? `
             **Gamerscore**: ${Number(player.xbox.gamerscore).toLocaleString()}
             **Location**: ${player.xbox.location || 'Easy SMP'}` : ''}
@@ -796,8 +791,10 @@ module.exports = {
                 👥 **Joined**: ${player?.town?.joinedAt ? player.town.joinedAt : player?.town?.exists ? "Unknown, perhaps they joined this town before this feature was added?" : "trashy nomad L"}
             `)
                         .setThumbnail(`https://api.tydiumcraft.net/skin?uuid=${player?.uuid}&direction=left`)
-                        .setColor("RANDOM")
-                        .setFooter(`One of the thousands of players Easy SMP has processed.`)
+                        .setColor(Discord.Colors.DarkVividPink)
+                        .setFooter({
+                            text: `One of the thousands of players Easy SMP has processed.`
+                        })
                 ]
             }
             opts.content = sass.random();

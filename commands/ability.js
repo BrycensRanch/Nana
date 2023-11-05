@@ -68,7 +68,7 @@ module.exports = {
      * @param {Array<String>} parsedArgs Parsed arguments like "discord epic" are seen as one argument.
      */
     async execute(message, args, client, flags, parsedArgs) {
-        const runningAsInteraction = message instanceof Discord.Interaction;
+        const runningAsInteraction = message instanceof Discord.BaseInteraction;
         var lastMessage;
         /** 
          * @param {Discord.Message} whatever Message class
@@ -167,7 +167,7 @@ module.exports = {
             const canHaveAbilityList = Object.entries(bossData)
             .filter(x => !x[1]['blacklisted-abilities']?.includes(abilityName.toUpperCase()))
             .map(x => `${capitalize(x[0])}`)
-            const abilityEmbed = new Discord.MessageEmbed();
+            const abilityEmbed = new Discord.EmbedBuilder();
             const opts = {
             components: [],
             embeds: [
@@ -181,8 +181,10 @@ module.exports = {
             **Can be used by**:
             - ${canHaveAbilityList.join("\n- ")}
             `)
-           .setColor("RANDOM")
-           .setFooter(`One of the ${Object.keys(abilityData).length} abilties for Infernal Mobs`)
+           .setColor(Discord.Colors.Orange)
+           .setFooter({
+                text: `One of the ${Object.keys(abilityData).length} abilties for Infernal Mobs Reloaded`
+           })
           ]
             }
             opts.content = sass.random();

@@ -68,7 +68,7 @@ module.exports = {
      * @param {Array<String>} parsedArgs Parsed arguments like "discord epic" are seen as one argument.
      */
     async execute(message, args, client, flags, parsedArgs) {
-        const runningAsInteraction = message instanceof Discord.Interaction;
+        const runningAsInteraction = message instanceof Discord.BaseInteraction;
         var lastMessage;
         /** 
          * @param {Discord.Message} whatever Message class
@@ -167,7 +167,7 @@ module.exports = {
             const mobDroppers = Object.entries(bossData).filter(x => x[1]['loot-table'].filter(l => l.includes(itemName))[0]).map((x, i) => `${capitalize(x[0])} (${Math.round(Number(x[1]['loot-table'].filter(loot => loot.includes(itemName)).join(", ").split(":")[1]) * 100)}% Chance)`)
             const isGlobalDrop = globalData['global-drops'].filter(d => d.includes(itemName))[0]
             if (isGlobalDrop) mobDroppers.push(`Any Infernal (${Number(capitalize(globalData['global-drops'].filter(d => d.includes(itemName))[0].split(":")[1])).toFixed(10) * 100}% Chance)`)
-            const itemEmbed = new Discord.MessageEmbed();
+            const itemEmbed = new Discord.EmbedBuilder();
             const opts = {
             components: [],
             embeds: [
@@ -184,8 +184,10 @@ module.exports = {
             - ${item.enchants?.map((x) => `${capitalize(x.split(":")[0])} ${x.split(":")[1] == '1' ? "" : romanize(x.split(":")[1])} (${Math.round(x.split(":")[2] * 100|| 100)}% Chance)`).join("\n- ") || 'Nothing...'}
             ${mobDroppers[0] ? '**Dropped by**:\n - ' + mobDroppers.join("\n- ") : ''}
             `)
-           .setColor("RANDOM")
-           .setFooter(`One of the ${Object.keys(itemData).length} items for Infernal Mobs`)
+           .setColor(Discord.Colors.Blurple)
+           .setFooter({
+               text: `One of the ${Object.keys(itemData).length} items for Infernal Mobs Reloaded`
+           })
             // **Ability Amount**: ${boss['ability-amount'] || 'Unknown'}
 
             // **Loot Table**: 
