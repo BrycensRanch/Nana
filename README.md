@@ -17,7 +17,10 @@ This project uses the Sentry BGC command handling approach. Thus, it may have so
 
 ## Demo
 
-[Video_2023-11-05_02-05-48.mp4](docs%2FVideo_2023-11-05_02-05-48.mp4)
+
+https://github.com/BrycensRanch/Nana/assets/117921904/6b8842db-0291-4545-999b-7a08c578da2c
+
+
 
 ## How do I run this myself?
 
