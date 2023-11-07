@@ -1,40 +1,32 @@
-[{
-    "name": "mysql",
-    "type": "mariadb",
-    "host": "127.0.0.1",
-    "port": 3306,
-    "username": "nana",
-    "password": "m4ceAfpRmZjVQZMmNDamNnV5d6nGBXXh",
-    "database": "advancedban",
-    "synchronize": false,
-    "logging": false,
-    "entities": [
-      "entity/*.js"
-    ],
-    "subscribers": [
-      "subscriber/*.js"
-    ],
-    "migrations": [
-      "migration/*.js"
-    ],
-    "cli": {
-      "entitiesDir": "entity",
-      "migrationsDir": "migration",
-      "subscribersDir": "subscriber"
-    }
-  },
-  {
-    "name":"sqlite3",
-    "type": "better-sqlite3",
-    "database": "./nana.db",
-    "synchronize": true,
-    "logging": false,
-    "entities": [
-      "sqliteEntity/*.js"
-    ],
-    "cli": {
-      "entitiesDir": "sqliteEntity"
-    }
-  }
+[
+	{
+		"name": "mysql",
+		"type": "mariadb",
+		"host": "127.0.0.1",
+		"port": 3306,
+		"username": "nana",
+		"password": "m4ceAfpRmZjVQZMmNDamNnV5d6nGBXXh",
+		"database": "advancedban",
+		"synchronize": false,
+		"logging": false,
+		"entities": ["entity/*.js"],
+		"subscribers": ["subscriber/*.js"],
+		"migrations": ["migration/*.js"],
+		"cli": {
+			"entitiesDir": "entity",
+			"migrationsDir": "migration",
+			"subscribersDir": "subscriber"
+		}
+	},
+	{
+		"name": "sqlite3",
+		"type": "better-sqlite3",
+		"database": "./nana.db",
+		"synchronize": true,
+		"logging": false,
+		"entities": ["sqliteEntity/*.js"],
+		"cli": {
+			"entitiesDir": "sqliteEntity"
+		}
+	}
 ]
-  

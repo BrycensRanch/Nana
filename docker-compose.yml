@@ -15,4 +15,4 @@ services:
       - ./data:/var/lib/mysql
       - ./init-discordsrv-database.sql:/docker-entrypoint-initdb.d/init-discordsrv-database.sql
     ports:
-      - "3306:3306"
+      - '3306:3306'

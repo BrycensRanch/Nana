@@ -1,0 +1,45 @@
+{
+	"$schema": "https://json.schemastore.org/eslintrc",
+	"env": {
+		"node": true
+	},
+	"extends": [
+		"eslint:recommended",
+		"plugin:node/recommended",
+		"plugin:jsdoc/recommended-error",
+		"plugin:sonarjs/recommended",
+		"plugin:unicorn/recommended",
+		"prettier"
+	],
+	"rules": {
+		"arrow-body-style": "off",
+		"brace-style": "error",
+		"dot-notation": "error",
+		"func-call-spacing": ["error", "never"],
+		"key-spacing": [
+			"error",
+			{
+				"beforeColon": false
+			}
+		],
+		"no-case-declarations": "error",
+		"sort-keys-fix/sort-keys-fix": "error",
+		"no-console": "off",
+		"no-eq-null": "error",
+		"no-lonely-if": "error",
+		"no-undefined": "error",
+		"no-var": "error",
+		"prefer-arrow-callback": "error",
+		"prefer-template": "error",
+		"sonarjs/cognitive-complexity": ["error", 15],
+		"space-before-blocks": ["error", "always"],
+		"space-infix-ops": "error",
+		"template-curly-spacing": "error",
+		"unicorn/prefer-module": "off",
+		"unicorn/filename-case": "off",
+		"unicorn/prefer-top-level-await": "off",
+		"node/no-unpublished-require": "off"
+	},
+	"ignorePatterns": ["node_modules/", "dist/", "coverage/", "build/", "public/"],
+	"plugins": ["node", "promise", "jsdoc", "sort-keys-fix", "unicorn", "sonarjs"]
+}

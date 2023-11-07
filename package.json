@@ -1,42 +1,64 @@
 {
-  "name": "nana",
-  "version": "1.0.0",
-  "description": "Utility Discord bot for your Minecraft server",
-  "private": true,
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ."
-  },
-  "keywords": [
-    "minecraft",
-    "minecraft server",
-    "discord",
-    "discord bot",
-    "discord bot minecraft"
-  ],
-  "author": "BrycensRanch",
-  "license": "AGPL-3.0",
-  "dependencies": {
-    "axios": "^1.6.0",
-    "bad-words": "^3.0.4",
-    "better-sqlite3": "^9.0.0",
-    "colors": "^1.4.0",
-    "common-tags": "^1.8.2",
-    "discord.js": "^14.13.0",
-    "figlet": "^1.7.0",
-    "human-date": "^1.4.0",
-    "js-yaml": "^4.1.0",
-    "minecraft-lookup": "^1.1.36",
-    "minecraft-server-properties": "^1.0.0",
-    "moment": "^2.29.4",
-    "mysql2": "^3.6.3",
-    "parse-numeric-range": "^1.3.0",
-    "paste.gg": "^1.0.5",
-    "qs": "^6.11.2",
-    "reflect-metadata": "^0.1.13",
-    "ssh2-sftp-client": "^9.1.0",
-    "string-similarity": "^4.0.4",
-    "typeorm": "^0.3.17"
-  }
+	"name": "nana",
+	"version": "1.0.0",
+	"description": "Utility Discord bot for your Minecraft server",
+	"private": true,
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node .",
+		"lint": "eslint --fix .",
+		"lint:check": "eslint .",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"commit": "cz"
+	},
+	"keywords": [
+		"minecraft",
+		"minecraft server",
+		"discord",
+		"discord bot",
+		"discord bot minecraft"
+	],
+	"author": "BrycensRanch",
+	"license": "AGPL-3.0",
+	"engines": {
+		"node": ">=18"
+	},
+	"dependencies": {
+		"axios": "^1.6.0",
+		"bad-words": "^3.0.4",
+		"better-sqlite3": "^9.0.0",
+		"colors": "^1.4.0",
+		"common-tags": "^1.8.2",
+		"discord.js": "^14.13.0",
+		"figlet": "^1.7.0",
+		"human-date": "^1.4.0",
+		"js-yaml": "^4.1.0",
+		"minecraft-lookup": "^1.1.36",
+		"minecraft-server-properties": "^1.0.0",
+		"moment": "^2.29.4",
+		"mysql2": "^3.6.3",
+		"parse-numeric-range": "^1.3.0",
+		"paste.gg": "^1.0.5",
+		"qs": "^6.11.2",
+		"reflect-metadata": "^0.1.13",
+		"ssh2-sftp-client": "^9.1.0",
+		"string-similarity": "^4.0.4",
+		"typeorm": "^0.3.17"
+	},
+	"devDependencies": {
+		"eslint": "^8.53.0",
+		"eslint-config-airbnb-base": "^15.0.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-jsdoc": "^46.8.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-promise": "^6.1.1",
+		"eslint-plugin-sonarjs": "^0.23.0",
+		"eslint-plugin-sort-keys-fix": "^1.1.2",
+		"eslint-plugin-unicorn": "^49.0.0",
+		"prettier": "^3.0.3",
+		"prettier-eslint-cli": "^8.0.1"
+	}
 }

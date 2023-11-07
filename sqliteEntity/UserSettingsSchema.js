@@ -1,26 +1,26 @@
-const {EntitySchema} = require("typeorm"); // import {EntitySchema} from "typeorm";
-const {UserSettings} = require("../sqliteModel/UserSettings"); // import {UserSettings} from "../sqliteModel/UserSettings";
+const { EntitySchema } = require('typeorm'); // import {EntitySchema} from "typeorm";
+const { UserSettings } = require('../sqliteModel/UserSettings'); // import {UserSettings} from "../sqliteModel/UserSettings";
 
 module.exports = new EntitySchema({
-    tableName: "UserSettings",
-    target: UserSettings,
-    columns: {
-        id: {
-            primary: true,
-            type: "int",
-            generated: true // auto_increment
-        },
-        discord: {
-            type: "varchar",
-            length: 32
-        },
-        uuid: {
-            type: "varchar",
-            unique: true
-        },
-        description: {
-            type: "varchar",
-            length: 300
-        },
-    }
+	columns: {
+		description: {
+			length: 300,
+			type: 'varchar',
+		},
+		discord: {
+			length: 32,
+			type: 'varchar',
+		},
+		id: {
+			generated: true,
+			primary: true,
+			type: 'int', // auto_increment
+		},
+		uuid: {
+			type: 'varchar',
+			unique: true,
+		},
+	},
+	tableName: 'UserSettings',
+	target: UserSettings,
 });

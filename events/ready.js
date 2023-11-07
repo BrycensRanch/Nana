@@ -1,25 +1,35 @@
-
-const colors = require("colors");
-const axios = require('axios');
-const Discord = require('discord.js')
-/** 
+const colors = require('colors');
+const { mkdir, realpath } = require('node:fs/promises');
+const { join } = require('node:path');
+const { tmpdir } = require('node:os');
+/**
  * @param {Discord.Client} client discord.js client
  */
 module.exports = async (client) => {
-const res = client.application;
-    client.botInfo = res;
-    if (res.owner?.constructor.name == 'Team') {
-      client.botAdmins = res.owner.members.map(x => x.user.id);
-    }
-    else {
-      client.botAdmins = [];
-      client.botAdmins.push(res.owner?.user.id || '387062216030945281');
-    }
-    client.user.setActivity(`Easy SMP`, {type: 'WATCHING'});
-    client.slashCommands = await client.application.commands.set(client._slashCommands)
-    console.log(colors.brightRed('The bot has successfully started.\n---\n'
-    +`Serving ${client.users.cache.size} users, ${client.botAdmins.length} bot admins, ${client.channels.cache.size} channels, and ${client.guilds.cache.size} guilds with ${client.commands.size} commands!`));
-    client.tempDir = require('path').join(await require('fs').promises.realpath(require('os').tmpdir()), 'Nana')
-    await require('fs').promises.mkdir(client.tempDir).catch(() => null)
-
-}
+	const {
+		user,
+		users,
+		channels,
+		commands,
+		guilds,
+		application: bot,
+		_slashCommands: uninitalizedSlashCommands,
+		tempDir,
+		botAdmins,
+	} = client;
+	client.botAdmins =
+		bot.owner?.constructor.name === 'Team'
+			? bot.owner.members.map((x) => x.user.id)
+			: [bot.owner?.user.id || '387062216030945281'];
+	user.setActivity(`Easy SMP`, { type: 'WATCHING' });
+	client.slashCommands = await bot.commands.set(uninitalizedSlashCommands);
+	console.log(
+		colors.brightRed(
+			'The bot has successfully started.\n---\n' +
+				`Serving ${users.cache.size} users, ${botAdmins.length} bot admins, ${channels.cache.size} channels, and ${guilds.cache.size} guilds with ${commands.size} commands!`,
+		),
+	);
+	if (process.send) process.send('ready');
+	client.tempDir = join(await realpath(tmpdir()), 'Nana');
+	mkdir(tempDir).catch(() => {});
+};
