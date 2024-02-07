@@ -34,7 +34,7 @@
     "parse-numeric-range": "^1.3.0",
     "paste.gg": "^1.0.5",
     "qs": "^6.11.2",
-    "reflect-metadata": "^0.1.13",
+    "reflect-metadata": "^0.2.0",
     "ssh2-sftp-client": "^9.1.0",
     "string-similarity": "^4.0.4",
     "typeorm": "^0.3.17"
