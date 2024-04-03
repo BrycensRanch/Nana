@@ -13,7 +13,7 @@ dependencies:
     version: 3.0.4
   better-sqlite3:
     specifier: ^9.0.0
-    version: 9.4.3
+    version: 9.4.4
   colors:
     specifier: ^1.4.0
     version: 1.4.0
@@ -64,7 +64,7 @@ dependencies:
     version: 4.0.4
   typeorm:
     specifier: ^0.3.17
-    version: 0.3.20(better-sqlite3@9.4.3)(mysql2@3.9.3)
+    version: 0.3.20(better-sqlite3@9.4.4)(mysql2@3.9.3)
 
 packages:
 
@@ -279,12 +279,12 @@ packages:
       tweetnacl: 0.14.5
     dev: false
 
-  /better-sqlite3@9.4.3:
-    resolution: {integrity: sha512-ud0bTmD9O3uWJGuXDltyj3R47Nz0OHX8iqPOT5PMspGqlu/qQFn+5S2eFBUCrySpavTjFXbi4EgrfVvPAHlImw==}
+  /better-sqlite3@9.4.4:
+    resolution: {integrity: sha512-h/gmKmmcTBHg9kDE05ZfocXyfQ7UzPlLVwHVD3yCZ5iXdj3x0hK5x2VTm4BRavBqxTGBOsmYcjOOHHMxuM0BVw==}
     requiresBuild: true
     dependencies:
       bindings: 1.5.0
-      prebuild-install: 7.1.1
+      prebuild-install: 7.1.2
     dev: false
 
   /bindings@1.5.0:
@@ -489,8 +489,8 @@ packages:
     engines: {node: '>=0.10'}
     dev: false
 
-  /detect-libc@2.0.2:
-    resolution: {integrity: sha512-UX6sGumvvqSaXgdKGUsgZWqcUyIXZ/vZTrlRT/iobiKhGL0zL4d3osHj3uqllWJK+i+sixDS/3COVEOFbupFyw==}
+  /detect-libc@2.0.3:
+    resolution: {integrity: sha512-bwy0MGW55bG41VqxxypOsdSdGqLwXPI/focwgTYCFMbdUiBAxLg9CFzG08sz2aqzknwiX7Hkl0bQENjg8iLByw==}
     engines: {node: '>=8'}
     dev: false
 
@@ -887,8 +887,8 @@ packages:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
     dev: false
 
-  /node-abi@3.56.0:
-    resolution: {integrity: sha512-fZjdhDOeRcaS+rcpve7XuwHBmktS1nS1gzgghwKUQQ8nTy2FdSDr6ZT8k6YhvlJeHmmQMYiT/IH9hfco5zeW2Q==}
+  /node-abi@3.57.0:
+    resolution: {integrity: sha512-Dp+A9JWxRaKuHP35H77I4kCKesDy5HUDEmScia2FyncMTOXASMyg251F5PhFoDA5uqBrDDffiLpbqnrZmNXW+g==}
     engines: {node: '>=10'}
     dependencies:
       semver: 7.6.0
@@ -973,18 +973,18 @@ packages:
       minipass: 7.0.4
     dev: false
 
-  /prebuild-install@7.1.1:
-    resolution: {integrity: sha512-jAXscXWMcCK8GgCoHOfIr0ODh5ai8mj63L2nWrjuAgXE6tDyYGnx4/8o/rCgU+B4JSyZBKbeZqzhtwtC3ovxjw==}
+  /prebuild-install@7.1.2:
+    resolution: {integrity: sha512-UnNke3IQb6sgarcZIDU3gbMeTp/9SSU1DAIkil7PrqG1vZlBtY5msYccSKSHDqa3hNg436IXK+SNImReuA1wEQ==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      detect-libc: 2.0.2
+      detect-libc: 2.0.3
       expand-template: 2.0.3
       github-from-package: 0.0.0
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.56.0
+      node-abi: 3.57.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
@@ -1270,7 +1270,7 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: false
 
-  /typeorm@0.3.20(better-sqlite3@9.4.3)(mysql2@3.9.3):
+  /typeorm@0.3.20(better-sqlite3@9.4.4)(mysql2@3.9.3):
     resolution: {integrity: sha512-sJ0T08dV5eoZroaq9uPKBoNcGslHBR4E4y+EBHs//SiGbblGe7IeduP/IH4ddCcj0qp3PHwDwGnuvqEAnKlq/Q==}
     engines: {node: '>=16.13.0'}
     hasBin: true
@@ -1330,7 +1330,7 @@ packages:
     dependencies:
       '@sqltools/formatter': 1.2.5
       app-root-path: 3.1.0
-      better-sqlite3: 9.4.3
+      better-sqlite3: 9.4.4
       buffer: 6.0.3
       chalk: 4.1.2
       cli-highlight: 2.1.11
