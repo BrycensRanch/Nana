@@ -16,7 +16,7 @@ importers:
         version: 3.0.4
       better-sqlite3:
         specifier: ^11.0.0
-        version: 11.0.0
+        version: 11.1.1
       colors:
         specifier: ^1.4.0
         version: 1.4.0
@@ -67,7 +67,7 @@ importers:
         version: 4.0.4
       typeorm:
         specifier: ^0.3.17
-        version: 0.3.20(better-sqlite3@11.0.0)(mysql2@3.10.1)
+        version: 0.3.20(better-sqlite3@11.1.1)(mysql2@3.10.1)
 
 packages:
 
@@ -183,8 +183,8 @@ packages:
   bcrypt-pbkdf@1.0.2:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
 
-  better-sqlite3@11.0.0:
-    resolution: {integrity: sha512-1NnNhmT3EZTsKtofJlMox1jkMxdedILury74PwUbQBjWgo4tL4kf7uTAjU55mgQwjdzqakSTjkf+E1imrFwjnA==}
+  better-sqlite3@11.1.1:
+    resolution: {integrity: sha512-bAlQQb7gwCgxNpDYafK0O4AaIOiTwA7srfqRtBbw0Nsiq6P+qxEYGl3hLw+9C5jX2FVjKW7oxkSouxlJ+3VX8A==}
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -536,8 +536,8 @@ packages:
   napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
 
-  node-abi@3.63.0:
-    resolution: {integrity: sha512-vAszCsOUrUxjGAmdnM/pq7gUgie0IRteCQMX6d4A534fQCR93EJU5qgzBvU6EkFfK27s0T3HEV3BOyJIr7OMYw==}
+  node-abi@3.65.0:
+    resolution: {integrity: sha512-ThjYBfoDNr08AWx6hGaRbfPwxKV9kVzAzOzlLKbk2CuqXE2xnCh+cbAGnwM3t8Lq4v9rUB7VfondlkBckcJrVA==}
     engines: {node: '>=10'}
 
   node-fetch@2.6.7:
@@ -1001,7 +1001,7 @@ snapshots:
     dependencies:
       tweetnacl: 0.14.5
 
-  better-sqlite3@11.0.0:
+  better-sqlite3@11.1.1:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.2
@@ -1339,7 +1339,7 @@ snapshots:
 
   napi-build-utils@1.0.2: {}
 
-  node-abi@3.63.0:
+  node-abi@3.65.0:
     dependencies:
       semver: 7.6.2
 
@@ -1390,7 +1390,7 @@ snapshots:
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.63.0
+      node-abi: 3.65.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
@@ -1562,7 +1562,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@0.3.20(better-sqlite3@11.0.0)(mysql2@3.10.1):
+  typeorm@0.3.20(better-sqlite3@11.1.1)(mysql2@3.10.1):
     dependencies:
       '@sqltools/formatter': 1.2.5
       app-root-path: 3.1.0
@@ -1580,7 +1580,7 @@ snapshots:
       uuid: 9.0.1
       yargs: 17.7.2
     optionalDependencies:
-      better-sqlite3: 11.0.0
+      better-sqlite3: 11.1.1
       mysql2: 3.10.1
     transitivePeerDependencies:
       - supports-color
