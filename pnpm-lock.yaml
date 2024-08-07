@@ -60,8 +60,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.2
       ssh2-sftp-client:
-        specifier: ^10.0.0
-        version: 10.0.3
+        specifier: ^11.0.0
+        version: 11.0.0
       string-similarity:
         specifier: ^4.0.4
         version: 4.0.4
@@ -682,9 +682,9 @@ packages:
     resolution: {integrity: sha512-qC9iz2FlN7DQl3+wjwn3802RTyjCx7sDvfQEXchwa6CWOx07/WVfh91gBmQ9fahw8snwGEWU3xGzOt4tFyHLxg==}
     engines: {node: '>= 0.6'}
 
-  ssh2-sftp-client@10.0.3:
-    resolution: {integrity: sha512-Wlhasz/OCgrlqC8IlBZhF19Uw/X/dHI8ug4sFQybPE+0sDztvgvDf7Om6o7LbRLe68E7XkFZf3qMnqAvqn1vkQ==}
-    engines: {node: '>=16.20.2'}
+  ssh2-sftp-client@11.0.0:
+    resolution: {integrity: sha512-lOjgNYtioYquhtgyHwPryFNhllkuENjvCKkUXo18w/Q4UpEffCnEUBfiOTlwFdKIhG1rhrOGnA6DeKPSF2CP6w==}
+    engines: {node: '>=18.20.4'}
 
   ssh2@1.15.0:
     resolution: {integrity: sha512-C0PHgX4h6lBxYx7hcXwu3QWdh4tg6tZZsTfXcdvc5caW/EMxaB4H9dWsl7qk+F7LAW762hp8VbXOX7x4xUYvEw==}
@@ -1486,7 +1486,7 @@ snapshots:
 
   sqlstring@2.3.3: {}
 
-  ssh2-sftp-client@10.0.3:
+  ssh2-sftp-client@11.0.0:
     dependencies:
       concat-stream: 2.0.0
       promise-retry: 2.0.1
