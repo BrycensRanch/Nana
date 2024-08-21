@@ -16,7 +16,7 @@ importers:
         version: 4.0.0
       better-sqlite3:
         specifier: ^11.0.0
-        version: 11.1.2
+        version: 11.2.0
       colors:
         specifier: ^1.4.0
         version: 1.4.0
@@ -67,7 +67,7 @@ importers:
         version: 4.0.4
       typeorm:
         specifier: ^0.3.17
-        version: 0.3.20(better-sqlite3@11.1.2)(mysql2@3.11.0)
+        version: 0.3.20(better-sqlite3@11.2.0)(mysql2@3.11.0)
 
 packages:
 
@@ -187,8 +187,8 @@ packages:
   bcrypt-pbkdf@1.0.2:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
 
-  better-sqlite3@11.1.2:
-    resolution: {integrity: sha512-gujtFwavWU4MSPT+h9B+4pkvZdyOUkH54zgLdIrMmmmd4ZqiBIrRNBzNzYVFO417xo882uP5HBu4GjOfaSrIQw==}
+  better-sqlite3@11.2.0:
+    resolution: {integrity: sha512-3Dz8d4CoIf0aa8hLnGRVoLicHEp6Js5LRxXHNmOaUhOM8WLbnNkGdzc2soEwR3YFap49s0k4u5JFNaRbW2BYQw==}
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -539,8 +539,8 @@ packages:
   napi-build-utils@1.0.2:
     resolution: {integrity: sha512-ONmRUqK7zj7DWX0D9ADe03wbwOBZxNAfF20PlGfCWQcD3+/MakShIHrMqx9YwPTfxDdF1zLeL+RGZiR9kGMLdg==}
 
-  node-abi@3.65.0:
-    resolution: {integrity: sha512-ThjYBfoDNr08AWx6hGaRbfPwxKV9kVzAzOzlLKbk2CuqXE2xnCh+cbAGnwM3t8Lq4v9rUB7VfondlkBckcJrVA==}
+  node-abi@3.67.0:
+    resolution: {integrity: sha512-bLn/fU/ALVBE9wj+p4Y21ZJWYFjUXLXPi/IewyLZkx3ApxKDNBWCKdReeKOtD8dWpOdDCeMyLh6ZewzcLsG2Nw==}
     engines: {node: '>=10'}
 
   node-fetch@2.6.7:
@@ -640,8 +640,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  semver@7.6.2:
-    resolution: {integrity: sha512-FNAIBWCx9qcRhoHcgcJ0gvU7SN1lYU2ZXuSfl04bSC5OpvDHFyJCjdNHomPXxjQlCBU67YW64PzY7/VIEH7F2w==}
+  semver@7.6.3:
+    resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -1007,7 +1007,7 @@ snapshots:
     dependencies:
       tweetnacl: 0.14.5
 
-  better-sqlite3@11.1.2:
+  better-sqlite3@11.2.0:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.2
@@ -1346,9 +1346,9 @@ snapshots:
 
   napi-build-utils@1.0.2: {}
 
-  node-abi@3.65.0:
+  node-abi@3.67.0:
     dependencies:
-      semver: 7.6.2
+      semver: 7.6.3
 
   node-fetch@2.6.7:
     dependencies:
@@ -1397,7 +1397,7 @@ snapshots:
       minimist: 1.2.8
       mkdirp-classic: 0.5.3
       napi-build-utils: 1.0.2
-      node-abi: 3.65.0
+      node-abi: 3.67.0
       pump: 3.0.0
       rc: 1.2.8
       simple-get: 4.0.1
@@ -1443,7 +1443,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  semver@7.6.2: {}
+  semver@7.6.3: {}
 
   seq-queue@0.0.5: {}
 
@@ -1569,7 +1569,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@0.3.20(better-sqlite3@11.1.2)(mysql2@3.11.0):
+  typeorm@0.3.20(better-sqlite3@11.2.0)(mysql2@3.11.0):
     dependencies:
       '@sqltools/formatter': 1.2.5
       app-root-path: 3.1.0
@@ -1587,7 +1587,7 @@ snapshots:
       uuid: 9.0.1
       yargs: 17.7.2
     optionalDependencies:
-      better-sqlite3: 11.1.2
+      better-sqlite3: 11.2.0
       mysql2: 3.11.0
     transitivePeerDependencies:
       - supports-color
