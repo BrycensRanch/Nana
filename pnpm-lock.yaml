@@ -16,7 +16,7 @@ importers:
         version: 4.0.0
       better-sqlite3:
         specifier: ^11.0.0
-        version: 11.6.0
+        version: 11.7.0
       colors:
         specifier: ^1.4.0
         version: 1.4.0
@@ -67,7 +67,7 @@ importers:
         version: 4.0.4
       typeorm:
         specifier: ^0.3.17
-        version: 0.3.20(better-sqlite3@11.6.0)(mysql2@3.11.4)
+        version: 0.3.20(better-sqlite3@11.7.0)(mysql2@3.11.4)
 
 packages:
 
@@ -187,8 +187,8 @@ packages:
   bcrypt-pbkdf@1.0.2:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
 
-  better-sqlite3@11.6.0:
-    resolution: {integrity: sha512-2J6k/eVxcFYY2SsTxsXrj6XylzHWPxveCn4fKPKZFv/Vqn/Cd7lOuX4d7rGQXT5zL+97MkNL3nSbCrIoe3LkgA==}
+  better-sqlite3@11.7.0:
+    resolution: {integrity: sha512-mXpa5jnIKKHeoGzBrUJrc65cXFKcILGZpU3FXR0pradUEm9MA7UZz02qfEejaMcm9iXrSOCenwwYMJ/tZ1y5Ig==}
 
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
@@ -1016,7 +1016,7 @@ snapshots:
     dependencies:
       tweetnacl: 0.14.5
 
-  better-sqlite3@11.6.0:
+  better-sqlite3@11.7.0:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.2
@@ -1584,7 +1584,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@0.3.20(better-sqlite3@11.6.0)(mysql2@3.11.4):
+  typeorm@0.3.20(better-sqlite3@11.7.0)(mysql2@3.11.4):
     dependencies:
       '@sqltools/formatter': 1.2.5
       app-root-path: 3.1.0
@@ -1602,7 +1602,7 @@ snapshots:
       uuid: 9.0.1
       yargs: 17.7.2
     optionalDependencies:
-      better-sqlite3: 11.6.0
+      better-sqlite3: 11.7.0
       mysql2: 3.11.4
     transitivePeerDependencies:
       - supports-color
