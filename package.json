@@ -1,6 +1,7 @@
 {
   "name": "nana",
   "version": "1.0.0",
+  "license": "AGPL-3.0-or-later",
   "description": "Utility Discord bot for your Minecraft server",
   "private": true,
   "main": "index.js",
