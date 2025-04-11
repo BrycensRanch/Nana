@@ -52,7 +52,7 @@ importers:
         version: 1.3.0
       paste.gg:
         specifier: ^1.0.5
-        version: 1.1.1
+        version: 1.1.2
       qs:
         specifier: ^6.11.2
         version: 6.14.0
@@ -564,8 +564,8 @@ packages:
   parse-numeric-range@1.3.0:
     resolution: {integrity: sha512-twN+njEipszzlMJd4ONUYgSfZPDxgHhT9Ahed5uTigpQn90FggW4SA/AIPq/6a149fTbE9qBEcSwE3FAEp6wQQ==}
 
-  paste.gg@1.1.1:
-    resolution: {integrity: sha512-drWnMFyW1kbJQiMRywSYt6s7DWh+xwEPpIGfLuq/58yk8zBo4xLPMqQIIbg6rRO3La8RGnsP/qU84OriJYAgiQ==}
+  paste.gg@1.1.2:
+    resolution: {integrity: sha512-ucyorWyxEbsc5m+utNBXPbSJtsY6fWi0YjeMxl6L3YUWUHdilgFsmzGlYPvbO7+QJuKO40L9ovwDAexYiV7NCQ==}
     engines: {node: '>=18'}
 
   path-key@3.1.1:
@@ -1339,7 +1339,7 @@ snapshots:
 
   parse-numeric-range@1.3.0: {}
 
-  paste.gg@1.1.1: {}
+  paste.gg@1.1.2: {}
 
   path-key@3.1.1: {}
 
