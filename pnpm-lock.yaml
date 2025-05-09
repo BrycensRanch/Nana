@@ -67,7 +67,7 @@ importers:
         version: 4.0.4
       typeorm:
         specifier: ^0.3.17
-        version: 0.3.22(better-sqlite3@11.9.1)(mysql2@3.14.1)(reflect-metadata@0.2.2)
+        version: 0.3.23(better-sqlite3@11.9.1)(mysql2@3.14.1)(reflect-metadata@0.2.2)
 
 packages:
 
@@ -302,8 +302,8 @@ packages:
     resolution: {integrity: sha512-lncTRk0k+8Q5D3nThnODBR8fR8x2fM798o8Vsr40Krx0DjPwpZCuxxTcFMrXMQVOqM1QB9wqWgaXPg3TbmlHqA==}
     engines: {node: '>=18'}
 
-  dotenv@16.4.7:
-    resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
     engines: {node: '>=12'}
 
   dunder-proto@1.0.1:
@@ -726,8 +726,8 @@ packages:
   typedarray@0.0.6:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
 
-  typeorm@0.3.22:
-    resolution: {integrity: sha512-P/Tsz3UpJ9+K0oryC0twK5PO27zejLYYwMsE8SISfZc1lVHX+ajigiOyWsKbuXpEFMjD9z7UjLzY3+ElVOMMDA==}
+  typeorm@0.3.23:
+    resolution: {integrity: sha512-CJUZWW7O5zZG0TA7bRpntJx97AvvQwsoSa1UgYlzTOtmkwODrqIyxP9wtzHpBssEKie5chnLiCVyxKNeYo65wQ==}
     engines: {node: '>=16.13.0'}
     hasBin: true
     peerDependencies:
@@ -1102,7 +1102,7 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  dotenv@16.4.7: {}
+  dotenv@16.5.0: {}
 
   dunder-proto@1.0.1:
     dependencies:
@@ -1523,7 +1523,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@0.3.22(better-sqlite3@11.9.1)(mysql2@3.14.1)(reflect-metadata@0.2.2):
+  typeorm@0.3.23(better-sqlite3@11.9.1)(mysql2@3.14.1)(reflect-metadata@0.2.2):
     dependencies:
       '@sqltools/formatter': 1.2.5
       ansis: 3.17.0
@@ -1531,7 +1531,7 @@ snapshots:
       buffer: 6.0.3
       dayjs: 1.11.13
       debug: 4.4.0
-      dotenv: 16.4.7
+      dotenv: 16.5.0
       glob: 10.4.5
       reflect-metadata: 0.2.2
       sha.js: 2.4.11
