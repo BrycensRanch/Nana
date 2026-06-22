@@ -27,7 +27,7 @@
     "discord.js": "^14.13.0",
     "figlet": "^1.7.0",
     "human-date": "^1.4.0",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^5.0.0",
     "minecraft-lookup": "^1.1.36",
     "minecraft-server-properties": "^1.0.0",
     "moment": "^2.29.4",
