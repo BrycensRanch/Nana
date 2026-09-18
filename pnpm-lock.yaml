@@ -43,7 +43,7 @@ importers:
         version: 1.0.0
       moment:
         specifier: ^2.29.4
-        version: 2.30.1
+        version: 2.31.0
       mysql2:
         specifier: ^3.6.3
         version: 3.24.4(@types/node@26.1.1)
@@ -394,8 +394,8 @@ packages:
   minecraft-server-properties@1.0.0:
     resolution: {integrity: sha512-zjIAlAxL8j7Yv09tT3YHHHDFd43GLPdVsomEiQRSDRatpplGRmXakxaYYo/LzvASbIOOa58PUiZfttf96rp5Mw==}
 
-  moment@2.30.1:
-    resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
+  moment@2.31.0:
+    resolution: {integrity: sha512-0acOTfMiWOheYS4eoWb80yYMb/JLvVv9SHbs2PehaDzfUG0Bw855SKyk0IKTnPGa5+U2bmi3W68l1+sGLX/pvw==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -951,7 +951,7 @@ snapshots:
 
   minecraft-server-properties@1.0.0: {}
 
-  moment@2.30.1: {}
+  moment@2.31.0: {}
 
   ms@2.1.3: {}
 
