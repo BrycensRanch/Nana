@@ -16,7 +16,7 @@ importers:
         version: 4.1.5
       better-sqlite3:
         specifier: ^13.0.0
-        version: 13.0.3
+        version: 13.1.1
       colors:
         specifier: ^1.4.0
         version: 1.4.0
@@ -67,7 +67,7 @@ importers:
         version: 4.0.4
       typeorm:
         specifier: ^1.0.0
-        version: 1.1.2(better-sqlite3@13.0.3)(mysql2@3.24.6(@types/node@26.1.1))
+        version: 1.1.2(better-sqlite3@13.1.1)(mysql2@3.24.6(@types/node@26.1.1))
 
 packages:
 
@@ -166,8 +166,8 @@ packages:
   bcrypt-pbkdf@1.0.2:
     resolution: {integrity: sha512-qeFIXtP4MSoi6NLqO12WfqARWWuCKi2Rn/9hJLEmtB5yTNr9DqFWkJRCf2qShWzPeAMRnOgCrq0sg/KLv5ES9w==}
 
-  better-sqlite3@13.0.3:
-    resolution: {integrity: sha512-RbOBxmLBG8uvFUc15X9+9SFemKcQ0WBuISBVkpuiaUB2qblC8UWlHEjdWVoZ8AdhSwmoEgsiXKfopX0CQxaACQ==}
+  better-sqlite3@13.1.1:
+    resolution: {integrity: sha512-JjyLCATp+VLxZVFyWkicyzKYwpEFLCrV4MmshW97xv3JXdhw5jBDcsbEWRGm2L/96E+k7rtjON8q9nml05h3Pw==}
     engines: {node: '>=22'}
 
   buffer-from@1.1.2:
@@ -742,7 +742,7 @@ snapshots:
     dependencies:
       tweetnacl: 0.14.5
 
-  better-sqlite3@13.0.3:
+  better-sqlite3@13.1.1:
     dependencies:
       node-addon-api: 8.9.1
 
@@ -1091,7 +1091,7 @@ snapshots:
 
   typedarray@0.0.6: {}
 
-  typeorm@1.1.2(better-sqlite3@13.0.3)(mysql2@3.24.6(@types/node@26.1.1)):
+  typeorm@1.1.2(better-sqlite3@13.1.1)(mysql2@3.24.6(@types/node@26.1.1)):
     dependencies:
       '@sqltools/formatter': 1.2.5
       ansis: 4.3.1
@@ -1104,7 +1104,7 @@ snapshots:
       tslib: 2.8.1
       yargs: 18.2.0
     optionalDependencies:
-      better-sqlite3: 13.0.3
+      better-sqlite3: 13.1.1
       mysql2: 3.24.6(@types/node@26.1.1)
     transitivePeerDependencies:
       - babel-plugin-macros
